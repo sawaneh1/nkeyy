@@ -55,7 +55,7 @@ export const loginCustomer = async (req, res, next) => {
   try {
     const { phoneNumber } = req.body;
     const customer = await Customer.findOne({ phoneNumber });
-    if (!customer) return res.json("you are not authorize");
+    if (!customer) return res.status(401).json("access denied");
     // const validPassword = await validatePassword(password, user.password);
     // const validPassword = bcrypt.compare(password, .password);
     // if (!validPassword) return next(new Error("Password is not correct"));
@@ -108,7 +108,7 @@ export const getCustomer = async (req, res, next) => {
     const customer = await Customer.findById(
       mongoose.Types.ObjectId(customerId)
     );
-    if (!customer) return res.json("no customer found....");
+    if (!customer) return res.status(404).json("no customer found....");
 
     const { firstName, lastName, phoneNumber, email, _id } = customer;
 

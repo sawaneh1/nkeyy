@@ -56,7 +56,7 @@ export const loginBusiness = async (req, res, next) => {
   try {
     const { phoneNumber } = req.body;
     const busisnes = await Business.findOne({ phoneNumber });
-    if (!busisnes) return res.json("you are not authorize");
+    if (!busisnes) return res.status(404).json("access denied");
     // const validPassword = await validatePassword(password, user.password);
     // const validPassword = bcrypt.compare(password, .password);
     // if (!validPassword) return next(new Error("Password is not correct"));
@@ -117,7 +117,7 @@ export const getBusiness = async (req, res, next) => {
     const business = await Business.findById(
       mongoose.Types.ObjectId(businessId)
     );
-    if (!business) return res.json("no business found....");
+    if (!business) return res.status(404).json("no business found....");
 
     const { businessName, businessType, phoneNumber, email, _id } = business;
 

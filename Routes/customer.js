@@ -8,14 +8,15 @@ import {
   registerCustomer,
   updateCustomer,
 } from "../Controllers/Customer.js";
+import customerAuth from "../Middlewares/customerAuth.js";
 
 const router = express.Router();
 router.post("/api/registercustomer", registerCustomer);
 router.post("/api/logincustomer", loginCustomer);
 
-router.get("/api/customers", getCustomers);
-router.get("/api/customer/:customerId", getCustomer);
-router.put("/api/customer/:customerId", updateCustomer);
-router.delete("/api/customer/:customerId", deleteCustomer);
+router.get("/api/customers", customerAuth, getCustomers);
+router.get("/api/customer/:customerId", customerAuth, getCustomer);
+router.put("/api/customer/:customerId", customerAuth, updateCustomer);
+router.delete("/api/customer/:customerId", customerAuth, deleteCustomer);
 
 export default router;

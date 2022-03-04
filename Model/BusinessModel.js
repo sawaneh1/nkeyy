@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 
 const BusinessSchema = new mongoose.Schema({
-  BusinessName: {
+  businessName: {
     type: String,
     required: true,
   },
-  BusinessType: {
+  businessType: {
     type: String,
     required: true,
   },

@@ -1,1 +1,3 @@
-# yoonima_api
+# A local transaction system. 
+
+#coming soon
